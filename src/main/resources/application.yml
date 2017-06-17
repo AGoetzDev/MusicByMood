@@ -1,0 +1,116 @@
+spring:
+    resources:
+        chain:
+            cache: false
+    jpa:
+        show-sql: false
+        hibernate:
+            ddl-auto: update
+    mvc:
+        throw-exception-if-no-handler-found: true
+    datasource: 
+        url: jdbc:postgresql://localhost:5432/musicbymood
+        username: 
+        password: 
+        testWhileIdle: true
+        validationQuery: SELECT 1
+        
+app:
+    name: MusicByMood
+    url: http://localhost:8080
+server: 
+    port: 8080
+
+soundcloud: Put Soundcloud key here
+    key: 2t9loNQH90kzJcsFCODdigxfp325aq4z
+    genres:
+        - name: Alternative Rock
+          identifier: soundcloud:genres:alternativerock
+          emotions: sadness, anger, disgust
+        - name: Ambient
+          identifier: soundcloud:genres:ambient
+          emotions: surprise, sadness, fear
+        - name: Classical
+          identifier: soundcloud:genres:classical
+          emotions: sadness, joy, disgust
+        - name: Country
+          identifier: soundcloud:genres:country
+          emotions: joy, sadness
+        - name: Dance and EDM
+          identifier: soundcloud:genres:danceedm
+          emotions: joy, anger 
+        - name: Dancehall
+          identifier: soundcloud:genres:dancehall
+          emotions: joy, surprise
+        - name: Deep House
+          identifier: soundcloud:genres:deephouse
+          emotions: sadness, fear, surprise
+        - name: Disco
+          identifier: soundcloud:genres:disco
+          emotions: joy, surprise
+        - name: Drum and Bass
+          identifier: soundcloud:genres:drumbass
+          emotions: joy, anger
+        - name: Dubstep
+          identifier: soundcloud:genres:dubstep
+          emotions: joy, anger, surprise
+        - name: Electronic
+          identifier: soundcloud:genres:electronic
+          emotions: surprise, joy, disgust
+        - name: Folk
+          identifier: soundcloud:genres:folksingersongwriter
+          emotions: sadness, neutral
+        - name: HipHop and Rap
+          identifier: soundcloud:genres:hiphoprap
+          emotions: anger, joy
+        - name: House
+          identifier: soundcloud:genres:house
+          emotions: joy, surprise
+        - name: Indie
+          identifier: soundcloud:genres:indie
+          emotions: fear, sadness, neutral
+        - name: Jazz and Blues
+          identifier: soundcloud:genres:jazzblues
+          emotions: surprise, sadness, fear
+        - name: Latin
+          identifier: soundcloud:genres:latin
+          emotions: joy, surprise
+        - name: Metal
+          identifier: soundcloud:genres:metal
+          emotions: anger, fear, disgust
+        - name: Piano
+          identifier: soundcloud:genres:piano
+          emotions: sadness
+        - name: Pop
+          identifier: soundcloud:genres:pop
+          emotions: joy, neutral
+        - name: Soul
+          identifier: soundcloud:genres:rbsoul
+          emotions: sadness
+        - name: Reggae
+          identifier: soundcloud:genres:reggae
+          emotions: joy, sadness
+        - name: Reggaeton
+          identifier: soundcloud:genres:reggaeton
+          emotions: joy, sadness
+        - name: Rock
+          identifier: soundcloud:genres:rock
+          emotions: joy, anger, fear
+        - name: Soundtrack
+          identifier: soundcloud:genres:soundtrack
+          emotions: fear, sadness
+        - name: Techno
+          identifier: soundcloud:genres:techno
+          emotions: anger, joy
+        - name: Trance
+          identifier: soundcloud:genres:trance
+          emotions: surprise, neutral, joy
+        - name: Trap
+          identifier: soundcloud:genres:trap
+          emotions: anger, joy 
+        - name: Trip Hop
+          identifier: soundcloud:genres:triphop
+          emotions: disgust, anger
+        - name: World
+          identifier: soundcloud:genres:world
+          emotions: surprise, joy, neutral

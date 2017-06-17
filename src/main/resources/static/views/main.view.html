@@ -1,0 +1,57 @@
+
+<!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">MusicByMood</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Welcome To MusicByMood!</div>
+                <div class="intro-heading">Show me how you feel and I will create a playlist for you!</div>
+                <label class="btn btn-xl btn-file">
+    				Select Image <input type="file" style="display: none;" ngf-select="vm.uploadPic($file)">
+				</label>
+            </div>
+        </div>
+    </header>
+
+    <!-- Playlist Section -->
+    <section id="playlist" ng-hide ="!vm.widget">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Playlist</h2>
+                    <h3 class="section-subheading text-muted">For detected emotion: {{vm.emotion}}</h3>
+                    <img ngf-thumbnail="vm.file">
+                </div>
+            </div>
+            <div class="row text-center">
+            	 <iframe id="sc-widget" width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/318727281"></iframe>
+            	<ul class="list-group">
+				  <li class="list-group-item" ng-class="{ active: $index == vm.currentTrackIndex }" ng-repeat="track in vm.playlist" ng-click = "vm.playTrack($index)">{{track.artist}} - {{track.title}}</li>
+				</ul>
+            </div>
+        </div>
+    </section>
