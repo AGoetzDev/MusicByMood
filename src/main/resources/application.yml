@@ -10,8 +10,8 @@ spring:
         throw-exception-if-no-handler-found: true
     datasource: 
         url: jdbc:postgresql://localhost:5432/musicbymood
-        username: 
-        password: 
+        username: postgres
+        password: root
         testWhileIdle: true
         validationQuery: SELECT 1
         
@@ -19,9 +19,9 @@ app:
     name: MusicByMood
     url: http://localhost:8080
 server: 
-    port: 8080
+    port: 9090
 
-soundcloud: Put Soundcloud key here
+soundcloud:
     key: 2t9loNQH90kzJcsFCODdigxfp325aq4z
     genres:
         - name: Alternative Rock

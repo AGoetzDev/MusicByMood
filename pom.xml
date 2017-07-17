@@ -45,6 +45,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+		        <exclusion>
+		            <groupId>org.springframework.boot</groupId>
+		            <artifactId>spring-boot-starter-tomcat</artifactId>
+		        </exclusion>
+		    </exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -80,7 +86,11 @@
             <groupId>org.nd4j</groupId>
             <artifactId>${nd4j.backend}</artifactId>
         </dependency>
-
+		<dependency>
+		    <groupId>io.vertx</groupId>
+		    <artifactId>vertx-web</artifactId>
+		    <version>3.4.2</version>
+		</dependency>
         <!-- Core DL4J functionality -->
         <dependency>
             <groupId>org.deeplearning4j</groupId>
@@ -88,12 +98,7 @@
             <version>${dl4j.version}</version>
         </dependency>
         
-         <!-- hot swapping, disable cache for template, enable live reload -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-        </dependency>
+         
         
         
 	</dependencies>

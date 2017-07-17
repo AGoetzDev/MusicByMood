@@ -38,7 +38,7 @@ public class ScheduledTasks {
 	@Autowired
 	private TrackRepository trepo;
 	
-	@Scheduled(fixedDelay = 3600000)
+	/*@Scheduled(fixedDelay = 3600000)
 	@Transactional 
 	public void getSCTop50(){
 		
@@ -76,6 +76,6 @@ public class ScheduledTasks {
 			log.info("Deleted "+deletecount+" tracks that were no longer in top 50");
 		}
 		
-	}
+	} */
 
 }

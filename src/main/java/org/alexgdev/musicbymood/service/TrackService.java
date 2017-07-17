@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TrackService {
@@ -36,7 +37,7 @@ public class TrackService {
 	
 	private static final Logger log = LoggerFactory.getLogger(TrackService.class);
 	
-	
+	@Transactional
 	public TrackListDTO getSoundCloudTracklistFromImage(String dataUrl) throws ServiceException{
 		MusicPlatform sc = platformRepo.findOneByName("soundcloud");
 		Emotion e = ferService.classifyBase64Image(dataUrl);
