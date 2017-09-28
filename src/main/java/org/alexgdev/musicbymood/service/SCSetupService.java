@@ -1,8 +1,6 @@
 package org.alexgdev.musicbymood.service;
 
-
-
-
+import org.alexgdev.musicbymood.components.UpdateSoundCloudTracksTask;
 import org.alexgdev.musicbymood.config.SCConfig;
 import org.alexgdev.musicbymood.config.SCConfig.SCGenre;
 import org.alexgdev.musicbymood.entities.Genre;
@@ -11,7 +9,11 @@ import org.alexgdev.musicbymood.entities.MusicPlatform;
 import org.alexgdev.musicbymood.entities.MusicPlatformRepository;
 import org.alexgdev.musicbymood.entities.PlatformGenreAttributes;
 import org.alexgdev.musicbymood.entities.PlatformGenreAttributesRepository;
+import org.alexgdev.musicbymood.entities.PlatformTrackAttributesRepository;
+import org.alexgdev.musicbymood.entities.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.stereotype.Service;
 
 
@@ -20,15 +22,17 @@ public class SCSetupService {
 	
 	@Autowired
 	private GenreRepository grepo;
-	
 	@Autowired
 	private MusicPlatformRepository prepo;
-	
 	@Autowired
 	private PlatformGenreAttributesRepository pgrepo;
 	
-
+	@Autowired
+	UpdateSoundCloudTracksTask task;
 	
+	@Autowired 
+	private TaskScheduler taskScheduler;
+
 	@Autowired
     private SCConfig scconfig;
 	
@@ -38,6 +42,10 @@ public class SCSetupService {
 			sc = new MusicPlatform();
 			sc.setApiKey(scconfig.getKey());
 			sc.setName("soundcloud");
+			prepo.save(sc);
+		} else {
+			System.out.println("A!"+scconfig.getKey());
+			sc.setApiKey(scconfig.getKey());
 			prepo.save(sc);
 		}
 		
@@ -66,7 +74,7 @@ public class SCSetupService {
 				pgrepo.save(genreattrib);
 			}
 		}
-		
+		taskScheduler.scheduleWithFixedDelay(task, 3600000);
 		
 		
 	}

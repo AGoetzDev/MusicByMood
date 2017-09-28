@@ -17,35 +17,34 @@ import org.alexgdev.musicbymood.entities.TrackRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-public class ScheduledTasks {
-	private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
+public class UpdateSoundCloudTracksTask implements Runnable{
+	
+	private static final Logger log = LoggerFactory.getLogger(UpdateSoundCloudTracksTask.class);
+	
 	
 	@Autowired
 	private GenreRepository grepo;
-	
 	@Autowired
 	private MusicPlatformRepository prepo;
-	
 	@Autowired
 	private PlatformTrackAttributesRepository ptrepo;
-	
 	@Autowired
 	private TrackRepository trepo;
-	
-	/*@Scheduled(fixedDelay = 3600000)
-	@Transactional 
-	public void getSCTop50(){
-		
+
+	@Override
+	@Transactional
+	public void run() {
 		log.info("Getting SoundCloud Top 50");
 		MusicPlatform sc = prepo.findOneByName("soundcloud");
 		if(sc != null){
-			String url = "https://api-v2.soundcloud.com/charts?kind=top&high_tier_only=false&limit=50&offset=0&linked_partitioning=1" +"&client_id="+sc.getApiKey();
+			
+			
+			String url = "https://api-v2.soundcloud.com/charts?kind=top&high_tier_only=false&client_id="+sc.getApiKey()+"&limit=20&offset=0&linked_partitioning=1";
 			ptrepo.deleteByPlatform(sc);
 			RestTemplate restTemplate = new RestTemplate();
 			for(PlatformGenreAttributes scgenre: sc.getAvailableGenres()){
@@ -76,6 +75,6 @@ public class ScheduledTasks {
 			log.info("Deleted "+deletecount+" tracks that were no longer in top 50");
 		}
 		
-	} */
+	}
 
 }

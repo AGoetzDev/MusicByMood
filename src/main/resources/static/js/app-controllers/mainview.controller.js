@@ -5,8 +5,8 @@
         .module('app')
         .controller('MainViewController', MainViewController);
 
-    MainViewController.$inject = ['$state', '$scope', 'Upload', '$timeout', 'ImageService', '$http'];
-    function MainViewController($state, $scope, Upload, $timeout, ImageService, $http) {
+    MainViewController.$inject = ['$state', '$scope', 'Upload', '$timeout', 'ImageService', '$http', '$anchorScroll', '$location'];
+    function MainViewController($state, $scope, Upload, $timeout, ImageService, $http, $anchorScroll, $location) {
         var vm = this;
 		vm.uploadPic = uploadPic;
 		vm.playTrack = playTrack;
@@ -61,6 +61,19 @@
 
 		}
 		
+		function goToAnchor(id){
+			var newHash = id;
+            var old = $location.hash();
+            if ($location.hash() !== newHash) {
+                $location.hash(id);
+                $anchorScroll(newHash);
+                $location.hash(old);
+            } else {
+                $anchorScroll(newHash);
+                $location.hash(old);
+            }
+		}
+		
 		function setupSCWidget(){
 			
 			vm.currentTrackIndex = 0;
@@ -90,6 +103,8 @@
 			          show_artwork: true
 			       });
 			      vm.widget = widget;
+			      goToAnchor("playlist");
+			      
 			 });
 			
 	        

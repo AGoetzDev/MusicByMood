@@ -14,7 +14,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.web.client.RestTemplate;
 
 import io.vertx.core.Vertx;
@@ -45,6 +47,11 @@ public class MusicByMoodApplication implements CommandLineRunner{
 	@Bean
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
+	}
+	
+	@Bean
+    TaskScheduler threadPoolTaskScheduler() {
+        return new ThreadPoolTaskScheduler();
 	}
 	
 	@Override
