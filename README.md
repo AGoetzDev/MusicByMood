@@ -3,5 +3,7 @@ Single Page Web App that uses a convolutional neural network to detect the facia
 
 Technologies used: Spring boot, Angular JS, DL4J
 
+Test it live at: http://music-by-mood.herokuapp.com
+
 # Setup
-A postgresql database is required, as well as a soundcloud key. The login information for the database and the soundcloud key ned to be added to the application.yml file.
+A postgresql database is required, as well as a soundcloud api key. The login information for the database and the soundcloud api key ned to be added to the application.yml file.

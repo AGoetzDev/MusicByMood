@@ -33,10 +33,10 @@ public class ServerVerticle extends AbstractVerticle {
             .handler(this::handleGeneratePlaylist);
         router.route("/*").handler(StaticHandler.create("static").setCachingEnabled(false));
         router.route().handler(FaviconHandler.create("static/favicon.ico"));
-
         vertx.createHttpServer()
             .requestHandler(router::accept)
-            .listen(config().getInteger("http.port", 8080));
+            .listen(Integer.getInteger("server.port")); //HEROKU
+            //.listen(config().getInteger("http.port", 8080));
     }
     
     public void handleGeneratePlaylist(RoutingContext context){

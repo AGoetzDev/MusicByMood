@@ -97,6 +97,7 @@
 			          show_artwork: true,
 			          auto_play: true
 			        });
+			        $scope.$apply();
 			      });
 			      
 			      widget.load(newSoundUrl, {

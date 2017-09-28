@@ -44,7 +44,7 @@ public class SCSetupService {
 			sc.setName("soundcloud");
 			prepo.save(sc);
 		} else {
-			System.out.println("A!"+scconfig.getKey());
+			
 			sc.setApiKey(scconfig.getKey());
 			prepo.save(sc);
 		}
